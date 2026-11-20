@@ -1,10 +1,14 @@
 # Bengali Book QA RAG
 
-[Video preview](./video_preview.mp4)
+<video controls width="720">
+  <source src="./video_preview.mp4" type="video/mp4">
+  Your browser does not support embedded video. [Download the video preview](./video_preview.mp4).
+</video>
 
-> Open or download `video_preview.mp4` to watch the application UI and question-answering flow.
+If the video player is not available in your Markdown viewer, [download the video preview](./video_preview.mp4).
 
-A Bengali question-answering application for the book **মেজদিদি**. The project uses a Streamlit chat interface and a FastAPI retrieval-augmented generation (RAG) backend.
+A Bengali question-answering application for the book **মেজদিদি**. The project uses a Streamlit chat interface and a FastAPI retrieval
+-augmented generation (RAG) backend.
 
 ## Features
 
