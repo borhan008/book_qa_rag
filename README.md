@@ -7,8 +7,7 @@
 
 If the video player is not available in your Markdown viewer, [download the video preview](./video_preview.mp4).
 
-A Bengali question-answering application for the book **মেজদিদি**. The project uses a Streamlit chat interface and a FastAPI retrieval
--augmented generation (RAG) backend.
+A Bengali question-answering application for the book **মেজদিদি**. The project uses a Streamlit chat interface and a FastAPI retrieval-augmented generation (RAG) backend.
 
 ## Features
 
