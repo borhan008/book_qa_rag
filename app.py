@@ -1,4 +1,6 @@
 import streamlit as st
+import requests
+
 
 sidebar = st.sidebar.title("Sidebar")
 st.sidebar.write("This is the sidebar where you can add additional controls and information.")
@@ -53,7 +55,23 @@ with st.form("my_form", clear_on_submit=True, border=False):
         submitted  = st.form_submit_button("", icon=":material/arrow_forward:", key="submit_button",  use_container_width=True)
 
 
-if submitted and text.strip() != "":
+if submitted and text.strip():
     st.session_state.messages.append({"role": "user", "content": text})
-    st.session_state.typing = True
+
+    with st.spinner("উত্তর খোঁজা হচ্ছে..."):
+        try:
+            response = requests.get(
+                "http://localhost:8000/ask",
+                params={"question": text},
+                timeout=120,
+            )
+            response.raise_for_status()
+            answer = response.json()["response"]
+        except requests.exceptions.HTTPError:
+            answer = f"সার্ভারে সমস্যা হয়েছে: {response.json().get('detail', response.text)}"
+        except requests.exceptions.RequestException as e:
+            answer = f"সার্ভারের সাথে সংযোগ করা যায়নি: {e}"
+
+    st.session_state.messages.append({"role": "assistant", "content": answer})
     st.rerun()
+
